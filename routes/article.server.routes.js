@@ -4,10 +4,10 @@ module.exports = function(app){
  var users = require('./../controllers/users.server.controller.js');
 
  
-  app.route('articles/new')
+  app.route('/articles/new')
 	.get(articles.new)
  
-  app.route('articles/all')
+  app.route('/articles/all')
 	.get(articles.all)
 	
  
