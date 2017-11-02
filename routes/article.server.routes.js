@@ -11,10 +11,10 @@ module.exports = function(app){
 	.get(articles.all)
 	
  
-  app.route('articles/:articleId')
+  app.route('/articles/:articleId')
 	.get(articles.view)
 	
-	 app.route('articles/:articleId')
+	 app.route('/articles/edit/:articleId')
 	.get(articles.edit)
  
  app.route('/api/articles')

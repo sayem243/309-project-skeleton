@@ -14,7 +14,7 @@
         </div> <br>
         <button id="submit">Submit</button>
         
-        <script src="/lib/jquerydist/jquery.min.js"></script>
+        <script src="/lib/jquery/dist/jquery.min.js"></script>
         <script>
             var article={title:"",content:""};
             
@@ -22,12 +22,16 @@
                article.title=$("#title").val(); 
             });
             
+            $("#content").change(function(){
+               article.content=$("#content").val(); 
+            });
+            
             $("#submit").click(function(){
                console.log(article);
                $.ajax({
                    method:"POST",
                    url:"/api/articles",
-                   data article
+                   data:article
                }).done(function(response){
                    console.log(response);
                }) ;
