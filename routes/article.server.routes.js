@@ -1,4 +1,4 @@
-module.exports = function(app){
+module.exports = function(app){	// this is the express app 
 
  var articles = require('./../controllers/articles.server.controller.js');
  var users = require('./../controllers/users.server.controller.js');
