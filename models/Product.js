@@ -12,8 +12,7 @@ var ProductSchema = {
   description: {
     type: String,
     default: '',
-    trim: true,
-    required: 'Content required'
+    trim: true
 
   },
   
