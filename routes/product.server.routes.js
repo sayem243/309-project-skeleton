@@ -33,4 +33,4 @@ module.exports = function(app){
 app.param('productId', products.productByID);
 
 
-}
+};

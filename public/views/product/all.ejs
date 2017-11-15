@@ -8,6 +8,7 @@
   <% for(var i=0; i<products.length; i++) { %>
     <h1> <%= products[i]._id %> </h1>
     <h1> <a href="/products/<%=products[i]._id %>"> <%= products[i].name %> </a> </h1>
+    <h1> <a href="/products/edit/<%=products[i]._id %>"> edit </a> </h1>
    
     <% } %>
 

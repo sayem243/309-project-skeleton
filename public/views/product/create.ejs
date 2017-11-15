@@ -1,69 +1,75 @@
-
+<!HTML DOCTYPE>
 <html>
-    <head>
-        <tittle>
-        New Products
-        </tittle>
-    </head>
-    <body>
-        <h1>
-            Create Products
-        </h1>
-        <div>Name:
-        <input type="name" id ="name"/>
-        </div><br>
-        <div>Description:
-        <textarea id="description" ></textarea>
-        </div> <br>
-        <div>Price:
-        <input type="number" id ="price"/>
-        </div><br>
-        <div>Quentity:
-        <input type="number" id ="quantity"/>
-        </div><br>
-        
-        <button id="submit">Submit</button>
-        <script src="/lib/jquery/dist/jquery.min.js"></script>
-        <script>
-            var product={name :"" , description : "", price:null ,quantity:null};
-            $("#name").change(function()
-            {
-                product.name= $("#name").val();
-            
-            });
-            
-             $("#description").change(function()
-            {
-                product.description= $("#description").val();
-            
-            });
-            
-             $("#price").change(function()
-            {
-                product.price= $("#price").val();
-            
-            });
-            
-            
-             $("#quantity").change(function()
-            {
-                product.quantity= $("#quantity").val();
-            
-            });
-            
-            $("#submit").click(function(){
-                $.ajax({
-                    method: "POST",
-                    url: "/api/products",
-                    data: product  
-                    
-                }).done(function(response){
-                    console.log(response);
-                });
-                
-            });
-            
-        </script>
-        </body>
+<head>
+  
+</head>
+<body>
+    <form id="form">
+        <h1>New Product </h1>
+        <label>Name:</label>
+        <input type='text' name="name" placeholder="nickname here"><br>
+        <label>Description:</label><br>
+        <textarea name="description" placeholder=""></textarea><br>
+        <label>Price:</label>
+        <input type='number' name="price" min="0" placeholder="price>0"><br>
+        <label>Quantity:</label>
+        <input type='number' name="quantity" min="1" placeholder="quantity>=1"><br>
+        <label id="Error"></label>
+        <button type="button" id="submit">Submit</button>
     
+    </form>
+  
+  
+  <script src="/lib/jquery/dist/jquery.min.js"></script>
+  <script>
+      $('#submit').click(function(){
+          var data = $('#form').serializeArray();
+          var product = {};
+          $.each(data, function(i,v){
+              product[v.name] = v.value;
+          })
+        //   if(product.name.length==0){
+        //       alert("Give a product name");
+        //       return;
+        //   }
+        //   if(product.description.length==0){
+        //       alert("Give a description of the product");
+        //       return;
+        //   }
+        //   if(Number(product.quantity)<0){
+        //       alert("Quantity should be a positive number");
+        //       return;
+        //   } 
+        //   if(product.quantity.length==0){
+        //       alert("Give quantity of the product");
+        //       return;
+        //   }
+        //   if(Number(product.price)<0){
+        //       alert("Price should be a positive number");
+        //       return;
+        //   }
+        //   if(product.price.length==0){
+        //       alert("Give price of the product");
+        //       return;
+        //   }
+          
+          $.ajax({
+              method: "POST",
+              url: "/api/products",
+              data: product
+          }).done(function(res){
+             alert("Form submited");
+             console.log(res);
+             window.location.href = "/products/"+res._id;
+          }).fail(function(res){
+              $("#Error").text(JSON.parse(res.responseText).message);
+              console.log(res.responseText);
+              //alert(res.responseText.message);
+          });
+      });
+      
+      
+  </script>
+</body>
 </html>
+

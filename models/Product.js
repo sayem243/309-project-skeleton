@@ -4,7 +4,7 @@ var ProductSchema = {
 
   name: {
     type: String,
-    default: '',
+    
     trim: true,
     required: 'Title required'
   },
@@ -18,14 +18,14 @@ var ProductSchema = {
   
   price:{
    type: Number,
-   default:0,
+   
    trim:true,
    required:'Price required'
   },
 
   quantity:{
    type: Number,
-   default:1,
+   
    trim:true,
    required:' Quantity  required'
   },
