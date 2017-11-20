@@ -28,30 +28,7 @@
           $.each(data, function(i,v){
               product[v.name] = v.value;
           })
-        //   if(product.name.length==0){
-        //       alert("Give a product name");
-        //       return;
-        //   }
-        //   if(product.description.length==0){
-        //       alert("Give a description of the product");
-        //       return;
-        //   }
-        //   if(Number(product.quantity)<0){
-        //       alert("Quantity should be a positive number");
-        //       return;
-        //   } 
-        //   if(product.quantity.length==0){
-        //       alert("Give quantity of the product");
-        //       return;
-        //   }
-        //   if(Number(product.price)<0){
-        //       alert("Price should be a positive number");
-        //       return;
-        //   }
-        //   if(product.price.length==0){
-        //       alert("Give price of the product");
-        //       return;
-        //   }
+       
           
           $.ajax({
               method: "POST",
